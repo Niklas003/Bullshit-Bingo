@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex">
     <input
       v-model="word"
       type="text"

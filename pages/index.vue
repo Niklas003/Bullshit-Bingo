@@ -1,12 +1,16 @@
 <template>
   <div>
-    <div class="flex justify-center items-center my-4 space-x-1">
-      <sizeInput @inputSize="handleSize" />
+    <div class="flex flex-col items-center my-4 space-y-8">
+      <sizeInput @inputSize="(size:number) => gameSize = size" />
       <wordInput @inputWord="handleWord" />
     </div>
     <div class="mx-8">
-      <div class="grid grid-cols-4 gap-2">
+      <div
+        class="grid gap-2"
+        :class="{ 'grid-cols-3': gameSize === 3, 'grid-cols-4': gameSize === 4, 'grid-cols-5': gameSize === 5 }"
+      >
         <cell v-for="i in words" :word="i" />
+        <emptyCell v-for="i in gameSize ** 2 - words.length" />
       </div>
     </div>
   </div>
@@ -17,14 +21,8 @@ import { ref } from "vue";
 const words = ref<string[]>([]);
 const gameSize = ref<number>(3);
 
-function handleSize(size: number) {
-  if (size > 0 && size < 10) {
-    gameSize.value = size;
-  }
-}
-
 function handleWord(word: string) {
-  if (word !== "" && word.valueOf.length < 16) {
+  if (word !== "" && word.valueOf.length < gameSize.value ** 2) {
     words.value.push(word);
   }
 }

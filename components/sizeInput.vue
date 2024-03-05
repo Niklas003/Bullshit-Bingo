@@ -1,27 +1,32 @@
 <template>
-  <div>
-    <input
-      v-model="size"
-      type="number"
-      class="rounded-l p-2 bg-slate-300 font-semibold placeholder:text-slate-500"
-      placeholder="Größe festlegen"
-    />
-    <button
-      type="button"
-      class="bg-green-500 hover:bg-green-600 text-white p-2 rounded-r"
-      @submit="handleInput"
-      @click="handleInput"
+  <div class="flex space-x-2 mx-4">
+    <div
+      @click="handleInput(3)"
+      class="flex flex-col items-center bg-slate-300 rounded-md p-4 cursor-pointer font-bold text-xl text-slate-800 hover:bg-slate-400"
     >
-      Größe Festlegen
-    </button>
+      <span>9</span>
+      <span>,,drei Gewinnt''</span>
+    </div>
+    <div
+      @click="handleInput(4)"
+      class="flex flex-col items-center bg-slate-300 rounded-md p-4 cursor-pointer font-bold text-xl text-slate-800 hover:bg-slate-400"
+    >
+      <span>16</span>
+      <span>,,vier Gewinnt''</span>
+    </div>
+    <div
+      @click="handleInput(5)"
+      class="flex flex-col items-center bg-slate-300 rounded-md p-4 cursor-pointer font-bold text-xl text-slate-800 hover:bg-slate-400"
+    >
+      <span>25</span>
+      <span>,,fünf Gewinnt''</span>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
-const size = ref<number>(3);
 const emit = defineEmits(["inputSize"]);
 
-function handleInput() {
-  emit("inputSize", size.value);
-  size.value = 3;
+function handleInput(size: number) {
+  emit("inputSize", size);
 }
 </script>
