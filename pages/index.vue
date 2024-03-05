@@ -1,5 +1,6 @@
 <template>
   <div>
+    <titleHero />
     <div class="flex flex-col items-center my-4 space-y-8">
       <sizeInput @inputSize="(size:number) => gameSize = size" />
       <wordInput @inputWord="handleWord" />
