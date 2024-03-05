@@ -1,12 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devServer: {
-    port: 8000
+    port: 8000,
   },
   devtools: { enabled: true },
-  modules: [
-    '@nuxtjs/tailwindcss'
-  ],
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/supabase"],
   css: ["@/assets/css/main.css"],
   postcss: {
     plugins: {
@@ -14,4 +12,12 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-})
+  supabase: {
+    redirectOptions: {
+      login: "/",
+      callback: "/",
+      exclude: [],
+      cookieRedirect: false,
+    },
+  },
+});
