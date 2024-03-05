@@ -12,8 +12,10 @@ const isCheck = ref(false);
 const props = defineProps<{
   word: string;
 }>();
+const emit = defineEmits(["checkBingo"]);
 
 function handleChecked() {
   isCheck.value = !isCheck.value;
+  emit("checkBingo");
 }
 </script>
